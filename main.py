@@ -18,7 +18,7 @@ class Hello(FloatLayout):
         self.main_label = Label(text = "Hello and Welcome!", size_hint=(1, .35),pos_hint={'x':0, 'y':.55})
         self.text_input = TextInput(text="...............!", size_hint=(.9, .1),pos_hint={'x':.05, 'y':.35})
     #Main Buttons
-        self.help_button = Button(text="Help", size_hint=(.3, .1),pos_hint={'x':.65, 'y':.2})
+        self.help_button = Button(text="Help", size_hint=(.3, .1),pos_hint={'x':.65, 'y':.2},on_press = self.update)
         self.exit_button = Button(text="Exit", size_hint=(.3, .1),pos_hint={'x':.65, 'y':.1},on_press = self.update)
         self.answer_button = Button(text="Answer", size_hint=(.6, .2),pos_hint={'x':.05, 'y':.1})
 
@@ -35,7 +35,7 @@ class Hello(FloatLayout):
 
     def update(self,event):
         if (event.text == "Help"):
-            self.main_label.text = "Help button to change button"
+            self.main_label.text = "******* HELP ******* \n Help button to change button \n Help button to change button"
         elif (event.text == "Go"):
             self.main_label.text = "Go button  to change button"
         else:
