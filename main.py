@@ -16,7 +16,7 @@ class Hello(FloatLayout):
         self.points_label = Label(text = "Points = " + str(points), size_hint=(.1, .15),pos_hint={'x':.9, 'y':.9})
         self.name_label = Label(text = "First Math Game", size_hint=(.1, .15),pos_hint={'x':.45, 'y':.9})
         self.main_label = Label(text = "Hello and Welcome!", size_hint=(1, .35),pos_hint={'x':0, 'y':.55})
-        self.text_input = TextInput(text="...............!", size_hint=(1, .1),pos_hint={'x':0, 'y':.35})
+        self.text_input = TextInput(text="...............!", size_hint=(.9, .1),pos_hint={'x':.05, 'y':.35})
     #Main Buttons
         self.help_button = Button(text="Help", size_hint=(.3, .1),pos_hint={'x':.65, 'y':.2})
         self.exit_button = Button(text="Exit", size_hint=(.3, .1),pos_hint={'x':.65, 'y':.1},on_press = self.update)
