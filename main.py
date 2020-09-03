@@ -40,7 +40,6 @@ class Hello(FloatLayout):
             self.main_label.text = "Go button  to change button"
         else:
             pass
-        #self.main_label.text = "Changed to change"
 
 class app1(App):
     def build(self):
