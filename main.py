@@ -2,7 +2,8 @@ from kivy.app import App
 from kivy.uix.button import Button
 from kivy.uix.label import Label
 from kivy.uix.floatlayout import FloatLayout
-from kivy.clock import Clock
+from kivy.uix.textinput import TextInput
+
 
 turns = 0
 points = 0
@@ -14,8 +15,8 @@ class Hello(FloatLayout):
         self.turns_label = Label(text = "Turns = " + str(turns), size_hint=(.1, .15),pos_hint={'x':.05, 'y':.9})
         self.points_label = Label(text = "Points = " + str(points), size_hint=(.1, .15),pos_hint={'x':.9, 'y':.9})
         self.name_label = Label(text = "First Math Game", size_hint=(.1, .15),pos_hint={'x':.45, 'y':.9})
-        self.main_label = Label(text = "Hello and Welcome!", size_hint=(1, .55),pos_hint={'x':0, 'y':.35})
-
+        self.main_label = Label(text = "Hello and Welcome!", size_hint=(1, .35),pos_hint={'x':0, 'y':.55})
+        self.text_input = TextInput(text="...............!", size_hint=(1, .1),pos_hint={'x':0, 'y':.35})
     #Main Buttons
         self.help_button = Button(text="Help", size_hint=(.3, .1),pos_hint={'x':.65, 'y':.2})
         self.exit_button = Button(text="Exit", size_hint=(.3, .1),pos_hint={'x':.65, 'y':.1},on_press = self.update)
@@ -30,6 +31,7 @@ class Hello(FloatLayout):
         self.add_widget(self.help_button)
         self.add_widget(self.answer_button)
         self.add_widget(self.name_label)
+        self.add_widget(self.text_input)
 
     def update(self,event):
         if (event.text == "Help"):
