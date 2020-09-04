@@ -4,23 +4,27 @@ from kivy.uix.label import Label
 from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.textinput import TextInput
 
-
-turns = 0
-points = 0
-
 class Hello(FloatLayout):
     def __init__(self,**kwargs):
         super(Hello,self).__init__(**kwargs)
 
-        self.turns_label = Label(text = "Turns = " + str(turns), size_hint=(.1, .15),pos_hint={'x':.05, 'y':.9})
-        self.points_label = Label(text = "Points = " + str(points), size_hint=(.1, .15),pos_hint={'x':.9, 'y':.9})
+        self.turns = 0
+        self.points = 0
+        questions = {'1+1=': '2', '1+2=': '3', '1+3=': '4', '1+__=2': '1'}
+        self.questions1 = [{'task': '1+1=', 'result': '2'}, {'task': '1+2=', 'result': '3'},
+                      {'task': '1+3=', 'result': '4'},
+                      {'task': '1+__=2', 'result': '1'}]
+
+
+        self.turns_label = Label(text = "Turns = " + str(self.turns), size_hint=(.1, .15),pos_hint={'x':.05, 'y':.9})
+        self.points_label = Label(text = "Points = " + str(self.points), size_hint=(.1, .15),pos_hint={'x':.9, 'y':.9})
         self.name_label = Label(text = "First Math Game", size_hint=(.1, .15),pos_hint={'x':.45, 'y':.9})
-        self.main_label = Label(text = "Hello and Welcome!", size_hint=(1, .35),pos_hint={'x':0, 'y':.55})
-        self.text_input = TextInput(text="...............!", size_hint=(.9, .1),pos_hint={'x':.05, 'y':.35})
+        self.main_label = Label(text = self.questions1[self.turns]['task'], size_hint=(1, .35),pos_hint={'x':0, 'y':.55})
+        self.text_input = TextInput(text="", size_hint=(.9, .1),pos_hint={'x':.05, 'y':.35})
     #Main Buttons
-        self.help_button = Button(text="Help", size_hint=(.3, .1),pos_hint={'x':.65, 'y':.2})
+        self.help_button = Button(text="Help", size_hint=(.3, .1),pos_hint={'x':.65, 'y':.2},on_press = self.update)
         self.exit_button = Button(text="Exit", size_hint=(.3, .1),pos_hint={'x':.65, 'y':.1},on_press = self.update)
-        self.answer_button = Button(text="Answer", size_hint=(.6, .2),pos_hint={'x':.05, 'y':.1})
+        self.answer_button = Button(text="Answer", size_hint=(.6, .2),pos_hint={'x':.05, 'y':.1},on_press = self.update)
 
 
 
@@ -35,11 +39,23 @@ class Hello(FloatLayout):
 
     def update(self,event):
         if (event.text == "Help"):
-            self.main_label.text = "Help button to change button"
-        elif (event.text == "Go"):
-            self.main_label.text = "Go button  to change button"
-        else:
-            pass
+            self.main_label.text = "******* HELP ******* \n Help button to change button \n Help button to change button"
+        elif (event.text == "Exit"):
+            self.main_label.text = "Exit button  to change button"
+        elif (event.text == "Answer"):
+            if self.text_input.text == self.questions1[self.turns]['result']:
+                self.points +=1
+
+            self.text_input.text = ''
+            self.turns += 1
+            self.turns_label.text = "Turns = " + str(self.turns)
+            self.points_label.text = "Points = " + str(self.points)
+
+            if self.turns + 1 > len(self.questions1):
+                self.main_label.text = 'game over'
+            else:
+                self.main_label.text = self.questions1[self.turns]['task']
+
 
 class app1(App):
     def build(self):
