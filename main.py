@@ -8,7 +8,7 @@ class Hello(FloatLayout):
     def __init__(self,**kwargs):
         super(Hello,self).__init__(**kwargs)
 
-        self.turns = 1
+        self.turns = 0
         self.points = 0
         questions = {'1+1=': '2', '1+2=': '3', '1+3=': '4', '1+__=2': '1'}
         self.questions1 = [{'task': '1+1=', 'result': '2'}, {'task': '1+2=', 'result': '3'},
@@ -46,6 +46,7 @@ class Hello(FloatLayout):
             if self.text_input.text == self.questions1[self.turns]['result']:
                 self.points +=1
 
+            self.text_input.text = ''
             self.turns += 1
             self.turns_label.text = "Turns = " + str(self.turns)
             self.points_label.text = "Points = " + str(self.points)
