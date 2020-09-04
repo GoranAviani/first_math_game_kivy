@@ -50,7 +50,7 @@ class Hello(FloatLayout):
             self.turns += 1
             self.turns_label.text = "Turns = " + str(self.turns)
             self.points_label.text = "Points = " + str(self.points)
-            
+
             if self.turns + 1 > len(self.questions1):
                 self.main_label.text = 'game over'
             else:
