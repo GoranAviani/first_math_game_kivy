@@ -55,8 +55,7 @@ class Hello(FloatLayout):
                 self.main_label.text = 'game over'
             else:
                 self.main_label.text = self.questions1[self.turns]['task']
-        else:
-            pass
+
 
 class app1(App):
     def build(self):
